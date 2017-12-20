@@ -1,5 +1,8 @@
 package general;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Main {
 	
 	public Main(){
@@ -11,6 +14,9 @@ public class Main {
 		int premier = nextPrime();
 		System.out.println("Nombre premier au pif : "+premier);
 		System.out.println("Est-il bien premier ? "+pseudoprime(premier));
+		
+		int fp = fingerprint(17, "bonjour");
+		System.out.println("fingerprint de 'bonjour' avec p = 17 : "+fp);
 		
 	}
 	
@@ -47,6 +53,21 @@ public class Main {
 			result = 2 + (int)(Math.random() * ((Math.pow(2, 23)-1 - 2) + 1));
 		}
 		return result;
+	}
+	
+	private int fingerprint(int p, String fn){
+		int stringSize = fn.length();
+		char tableauDeChar[] = fn.toCharArray(); // on recupere chaque caractère de la String dans un tableau de char
+
+		int result = 0;
+		int cpt = 0;
+		int valeurASCII;
+		for(int i = stringSize -1; i >= 0; i--){ // Construction de la boucle pour application de la formule
+			valeurASCII = (int)tableauDeChar[cpt]; // on recupere la valeur ASCII du caractère courant
+			result += valeurASCII * Math.pow(256, i)%p;
+			cpt++;
+		}
+		return result%p;
 	}
 }
 
