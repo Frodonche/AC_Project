@@ -1,5 +1,6 @@
 package general;
 
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -18,6 +19,8 @@ public class Main {
 		int fp = fingerprint(17, "bonjour");
 		System.out.println("fingerprint de 'bonjour' avec p = 17 : "+fp);
 		
+		Path kyo = Paths.get("C:/tutorial/wiki.txt);
+		Files.readAllBytes();
 	}
 	
 	private int puissance(int x, int k, int p){
