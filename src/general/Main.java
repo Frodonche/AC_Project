@@ -1,8 +1,9 @@
 package general;
 
+import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Main {
 	
@@ -19,8 +20,12 @@ public class Main {
 		int fp = fingerprint(17, "bonjour");
 		System.out.println("fingerprint de 'bonjour' avec p = 17 : "+fp);
 		
-		Path kyo = Paths.get("C:/tutorial/wiki.txt);
-		Files.readAllBytes();
+		Path kyo = Paths.get("./fichiers_fournis/test1");
+		byte[] elTablo = ouvrirFichier(kyo);
+		/*for(byte b : elTablo)
+				System.out.println(b);*/
+		int fpT = fingerprintByte(5407, elTablo);
+		System.out.println("fingerprint du fichier test1 avec p = 5407 : "+fpT);
 	}
 	
 	private int puissance(int x, int k, int p){
@@ -71,6 +76,31 @@ public class Main {
 			cpt++;
 		}
 		return result%p;
+	}
+	
+	
+	private int fingerprintByte(int p, byte[] b){
+		int stringSize = b.length;
+
+		int result = 0;
+		int cpt = 0;
+		int valeurASCII;
+		for(int i = stringSize -1; i >= 0; i--){ // Construction de la boucle pour application de la formule
+			valeurASCII = (int)b[cpt]; // on recupere la valeur ASCII du caractère courant
+			result += valeurASCII * Math.pow(256, i)%p;
+			cpt++;
+		}
+		return result%p;
+	}
+	
+	private byte[] ouvrirFichier(Path kyo){
+		byte[] elTablo = null;
+		try {
+			elTablo = Files.readAllBytes(kyo);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return elTablo;
 	}
 }
 
