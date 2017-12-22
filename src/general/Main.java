@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Main {
-	private int premierRes;
 	
 	public Main(){	
 		premierRes = 0;
@@ -85,7 +84,6 @@ public class Main {
 		// on fait le calcul une premiere fois pour le premier cas
 		puissance = 1;
 		result += tabValeurs[0] %p;
-		premierRes = result; // on stocke pour les questions 10 et 11. Sale, mais bon...
 		
 		// puis on calcule la puissance en fonction de la precedente
 		// on applique les modulo le plus tot possible pour empêcher le depassement de taille de nombre
@@ -104,6 +102,7 @@ public class Main {
 		// On recupere les tableaux de byte des deux fichiers
 		byte[] petitT = getTabFichier(petit);
 		byte[] grosT = getTabFichier(gros);
+		byte[] morceauT;
 		
 		// On stocke la taille des deux tableaux
 		int taillePetit = petitT.length;
@@ -115,14 +114,38 @@ public class Main {
 		// On calcule le fingerprint du petit
 		int petitFP = fingerprintByte(p, petitT);
 		
-		boolean trouve = false; // boolean qui determine si on a trouve dans gros un fingerprint identique à petit
+		// On recupere la partie du grosT qui nous interesse
+		morceauT = getPartTab(0, taillePetit, grosT);
+		
+		// On calcule sa fingerprint
+		int partielFP = fingerprintByte(p, morceauT);
+		
+		 // La valeur qu'on va soustraire au moment de decaler le calcul d'un cran (le premier result intermediaire dans le fingerprint)
+		int temp;
+		
+		boolean trouve = petitFP == partielFP; // boolean qui determine si on a trouve dans gros un fingerprint identique à petit
 		int borneMax = taillePetit; 
 		while(!trouve && borneMax <= tailleGros){ // tant qu'on n'a pas trouve de fingerprint identique ou qu'on n'a pas parcouru tout le gros tableau
-			
+			// recuper le nouveau morceauT
+			temp = morceauT[0] %p;
+			// retirer temp à partielFP
+			// diviser 256%p 
 		}
 		
 		
 		return false;
+	}
+	
+	/**
+	 * Fonction qui recupere un morceau du tableau passe en parametres
+	 * avec debut : l'indice de debut dans le tableau et taille : la taille du morceau
+	 */
+	public byte[] getPartTab(int debut, int taille, byte[] tab){
+		byte[] result = new byte[taille];
+		for(int i = 0; i < taille; i++){
+			result[i] = tab[i+debut];
+		}
+		return result;
 	}
 	
 	/**
