@@ -1,0 +1,38 @@
+Rapport Projet Algorithme et Complexité
+Paul Decanter & Guillaume Roth
+
+Notes :
+  Lors de l'execution du programme, des fonctions de test sont disponibles pour chaque question du projet que nous avons traitee.
+
+2.2/ Calcul du fingerprint
+Q5/
+  Nous avons testé le programme sur les fichiers test1 et test4 avec de grandes valeurs de p et avons obtenu les affichages suivants
+  fingerprint du fichier test1 avec p = 5279233 : 4544154
+  fingerprint du fichier test4 avec p = 5279233 : 3028786
+  fingerprint du fichier test1 avec p = 65633 : 12553
+  fingerprint du fichier test4 avec p = 65633 : 15457
+  fingerprint du fichier test1 avec p = 5926729 : 4919480
+  fingerprint du fichier test4 avec p = 5926729 : 3743975
+  fingerprint du fichier test1 avec p = 3443603 : 3090958
+  fingerprint du fichier test4 avec p = 3443603 : 1250814
+  fingerprint du fichier test1 avec p = 8124931 : 4548898
+  fingerprint du fichier test4 avec p = 8124931 : 3163357
+  fingerprint du fichier test1 avec p = 767677 : 246830
+  fingerprint du fichier test4 avec p = 767677 : 423854
+  
+  Nous pouvons constater que les fingerprint sont effectivemetn différents.
+  
+Q6/
+  Lorsque nous lançons notre programme sur les fichiers test3.xpm et test4, nous pouvons constater que leurs fingerprints sont très souvent identiques.
+  
+Q7/
+
+Q8/
+  Nous avons, grace a la Q5, pu constater que les fichiers test1 et test4 possèdent pratiquement systematiquement le meme fingerprint, quelque soit la valeur de p choisie.
+  Nous pouvons donc supposer que ces deux fichiers sont plus ou moins identiques.
+  Nous emettons donc l'hypothese que le fichier test4 (de type binary) a ete obtenu en convertissant le fichier test1 (de type image xpm) en fichier binary.
+  
+Q9/ 
+  Comme pour chaque projet effectue dans un laps de temps un peu limite avec une question bonus un peu compliquee : RIP le bonus... :'(
+  
+  
