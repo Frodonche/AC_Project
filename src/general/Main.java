@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class Main {
 	
 	public Main(){	
-		premierRes = 0;
 	}
 	
 	public int puissance(int x, int k, int p){
@@ -126,7 +125,7 @@ public class Main {
 		boolean trouve = petitFP == partielFP; // boolean qui determine si on a trouve dans gros un fingerprint identique à petit
 		int borneMax = taillePetit; 
 		while(!trouve && borneMax <= tailleGros){ // tant qu'on n'a pas trouve de fingerprint identique ou qu'on n'a pas parcouru tout le gros tableau
-			// recuper le nouveau morceauT
+			// recuperer le nouveau morceauT
 			temp = morceauT[0] %p;
 			// retirer temp à partielFP
 			// diviser 256%p 
