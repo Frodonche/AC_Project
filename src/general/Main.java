@@ -126,7 +126,7 @@ public class Main {
 		int borneMax = taillePetit-1; 
 		int puissanceNouvelleCase = puissance(256, taillePetit-1, p);
 		int tabValues[] = byteToInt(morceauT);
-		while(!trouve && borneMax < tailleGros){ // tant qu'on n'a pas trouve de fingerprint identique ou qu'on n'a pas parcouru tout le gros tableau
+		while(!trouve && borneMax < tailleGros-1){ // tant qu'on n'a pas trouve de fingerprint identique ou qu'on n'a pas parcouru tout le gros tableau
 			// --- On effectue le decallage --- //
 			// recuperer le nouveau morceauT
 			temp = tabValues[0] %p;

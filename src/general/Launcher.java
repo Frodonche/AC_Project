@@ -24,7 +24,7 @@ public class Launcher {
 		String input;
 		int num = -1;
 		boolean result = false;
-		while((num != 0)&&(num < 0 || num > 5)) {
+		while((num != 0)&&(num < 0 || num > 6)) {
 			afficherMenu();
 			in = new Scanner(System.in);
 			try {
@@ -54,6 +54,9 @@ public class Launcher {
 		case 5:
 			monTest.testCentaineExecutions(); // Q6
 			break;
+		case 6:
+			monTest.testFingerContains(); // Q10 Q11
+			break;
 		}
 		return result;
 	}
@@ -66,6 +69,7 @@ public class Launcher {
 		menu += "3- Fingerprint Texte (Q4)\n";
 		menu += "4- Fingerprint Fichiers (Q4, Q5)\n";
 		menu += "5- Centaine executions (Q6)\n";
+		menu += "6- FingerContains (Q10 Q11)\n";
 		menu += "Faites votre choix (0 pour quitter): ";
 	}
 	

@@ -59,4 +59,19 @@ public class Tests {
 		System.out.println("-- testCentaineExecutions -- ");
 		main.testNombreuxFP(100, "test3.xpm", "test4");
 	}
+	
+	
+	/**
+	 * Test si les fichiers test2 et test4 sont respectivement contenus dans les fichiers test5.xpm et test3.xpm 
+	 */
+	public void testFingerContains() {
+		System.out.println("-- testFingerContains -- ");
+		
+		boolean test25 = main.fingerContains("test2", "test5.xpm");
+		System.out.println("test2 est contenu dans test5.xpm : "+test25);
+		
+		boolean test43 = main.fingerContains("test4", "test3.xpm");
+		System.out.println("test4 est contenu dans test3.xpm : "+test43);
+	}
+	
 }
