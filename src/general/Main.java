@@ -123,12 +123,32 @@ public class Main {
 		int temp;
 		
 		boolean trouve = petitFP == partielFP; // boolean qui determine si on a trouve dans gros un fingerprint identique à petit
-		int borneMax = taillePetit; 
-		while(!trouve && borneMax <= tailleGros){ // tant qu'on n'a pas trouve de fingerprint identique ou qu'on n'a pas parcouru tout le gros tableau
+		int borneMax = taillePetit-1; 
+		int puissanceNouvelleCase = puissance(256, taillePetit-1, p);
+		int tabValues[] = byteToInt(morceauT);
+		while(!trouve && borneMax < tailleGros){ // tant qu'on n'a pas trouve de fingerprint identique ou qu'on n'a pas parcouru tout le gros tableau
+			// --- On effectue le decallage --- //
 			// recuperer le nouveau morceauT
-			temp = morceauT[0] %p;
+			temp = tabValues[0] %p;
+			
 			// retirer temp à partielFP
-			// diviser 256%p 
+			partielFP -= temp;
+			
+			// diviser 256%p
+			partielFP = (partielFP/256)%p;
+			
+			//decaller tableau
+			borneMax += 1; // pour recuperer la nouvelle derniere case
+			morceauT = decallerTableau(morceauT);
+			morceauT[taillePetit-1] = grosT[borneMax];
+			
+			// ajouter la nouvelle valeur
+			tabValues =	byteToInt(morceauT);
+			partielFP += multiply(tabValues[borneMax], puissanceNouvelleCase, p) ;
+			
+			// on check si le nouveau fingerprint est le meme que celui du petit fichier
+			trouve = partielFP == petitFP;
+				
 		}
 		
 		
@@ -175,6 +195,19 @@ public class Main {
 		return tab;
 	}
 
+	/**
+	 * Fonction qui decalle les cases du tableau a gauche
+	 * La derniere case est la meme que l'avant derniere
+	 * Mais utile pour notre utilisation
+	 */
+	public byte[] decallerTableau(byte[] tab) {
+		for(int i = 0; i < tab.length-2; i++) {
+			tab[i] = tab[i+1];
+		}
+		return tab;
+	}
+	
+	
 	/**
 	 * Fonction qui convertit un tableau de bytes en tableau d'entiers non signes
 	 */
