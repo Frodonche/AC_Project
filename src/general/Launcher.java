@@ -25,7 +25,7 @@ public class Launcher {
 		String input;
 		int num = -1;
 		boolean result = false;
-		while ((num != 0) && (num < 0 || num > 8)) {
+		while ((num != 0) && (num < 0 || num > 9)) {
 			afficherMenu();
 			in = new Scanner(System.in);
 			try {
@@ -63,7 +63,10 @@ public class Launcher {
 			break;
 
 		case 8:
-			testBP.testFirstFitPacking(); // Q12
+			testBP.testFirstFitPacking(); // Q13
+			break;
+		case 9:
+			testBP.testBestFitPacking(); // Q14
 			break;
 		}
 		return result;
@@ -81,7 +84,8 @@ public class Launcher {
 		menu += "6- FingerContains (Q10 Q11)\n\n";
 		menu += "BINPACKING\n";
 		menu += "7- Fractional packing (Q12)\n";
-		menu += "8- First fit packing (Q12)\n";
+		menu += "8- First fit packing (Q13)\n";
+		menu += "9- Best fit packing (Q14)\n";
 		menu += "\nFaites votre choix (0 pour quitter): ";
 	}
 
