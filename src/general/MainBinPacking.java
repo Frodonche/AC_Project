@@ -1,6 +1,7 @@
 package general;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MainBinPacking {
 	
@@ -134,6 +135,53 @@ public class MainBinPacking {
 			System.out.println("Impossible : au moins un objet est plus gros que la taille des boites");
 		}
 	}
+	
+	
+	public void firstFitDecreasingPacking(int tailleBoite, int...lesObjets) {
+		// On recupere les objets dans une ArrayList
+		ArrayList<Integer> listeObjets = new ArrayList<Integer>();
+		for(int objet : lesObjets) {
+			listeObjets.add(objet);
+		}
+		
+		// On trie l'ArrayList dans l'ordre croissant, puis on la retourne
+		Collections.sort(listeObjets);
+		Collections.sort(listeObjets, Collections.reverseOrder());
+		
+		// la liste est consideree comme une liste d'objet et non d'entier, ce qui pose probleme pour l'appel de fonction
+		// donc on cree un tableau d'entiers que l'on remplit avec les Integer value des dit objets
+		int temp[] = new int[listeObjets.size()];
+		for(int i = 0; i < listeObjets.size(); i++) {
+			temp[i] = Integer.valueOf(listeObjets.get(i));
+		}
+		
+		// Puis on appelle la methode firstFitPacking
+		firstFitPacking(tailleBoite, temp);
+	}
+	
+	
+	public void bestFitDecreasingPacking(int tailleBoite, int...lesObjets) {
+		// On recupere les objets dans une ArrayList
+		ArrayList<Integer> listeObjets = new ArrayList<Integer>();
+		for(int objet : lesObjets) {
+			listeObjets.add(objet);
+		}
+		
+		// On trie l'ArrayList dans l'ordre croissant, puis on la retourne
+		Collections.sort(listeObjets);
+		Collections.sort(listeObjets, Collections.reverseOrder());
+		
+		// la liste est consideree comme une liste d'objet et non d'entier, ce qui pose probleme pour l'appel de fonction
+		// donc on cree un tableau d'entiers que l'on remplit avec les Integer value des dit objets
+		int temp[] = new int[listeObjets.size()];
+		for(int i = 0; i < listeObjets.size(); i++) {
+			temp[i] = Integer.valueOf(listeObjets.get(i));
+		}
+		
+		// Puis on appelle la methode bestFitPacking
+		bestFitPacking(tailleBoite, temp);
+	}
+	
 	
 	/**
 	 * Check si la taille d'un objet de la liste est plus gros que la taille des boites

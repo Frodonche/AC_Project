@@ -32,4 +32,20 @@ public class TestsBinPacking {
 		System.out.println("-- testBestFitPacking --");
 		main.bestFitPacking(10, 8, 4, 2, 6);
 	}
+	
+	/**
+	 * Test du decreasing first fit packing (Q15)
+	 */
+	public void testFirstFitDecreasingPacking() {
+		System.out.println("-- testFirstFitDecreasingPacking --");
+		main.firstFitDecreasingPacking(10, 8, 4, 2, 6);
+	}
+	
+	/**
+	 * Test du best fit decreasing packing (Q15)
+	 */
+	public void testBestFitDecreasingPacking() {
+		System.out.println("-- testBestFitDecreasingPacking --");
+		main.bestFitDecreasingPacking(10, 8, 4, 2, 6);
+	}
 }
