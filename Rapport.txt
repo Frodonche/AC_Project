@@ -41,3 +41,6 @@ Q11/
 	-- testFingerContains -- 
 	test2 est contenu dans test5.xpm : false
 	test4 est contenu dans test3.xpm : false
+
+3/ Problème de bin packing
+Dans cette partie, chaque objet sera (au niveau du programme) represente par sa hauteur

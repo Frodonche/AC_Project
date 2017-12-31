@@ -4,9 +4,9 @@ public class TestsFingerprint {
 	MainFingerprint main;
 	
 	public TestsFingerprint(){
-		System.out.println("Creation d'une instance Main pour les tests...");
+		System.out.println("Creation d'une instance MainFingerprint pour les tests...");
 		main = new MainFingerprint();
-		System.out.println("Instance de Main creee !");
+		System.out.println("Instance de Mainfingerprint creee !");
 	}
 	
 	/**

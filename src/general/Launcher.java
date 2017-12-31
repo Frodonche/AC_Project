@@ -4,27 +4,28 @@ import java.util.Scanner;
 
 public class Launcher {
 	static String menu;
-	
-	public static void main(String[] args){
+
+	public static void main(String[] args) {
 		System.out.println("Projet AC");
-		
+
 		// Creation de l'instance de tests
-		TestsFingerprint monTest = new TestsFingerprint();
-		
+		TestsFingerprint testFP = new TestsFingerprint();
+		TestsBinPacking testBP = new TestsBinPacking();
+
 		genererMenu();
 		boolean fin = false;
-		
-		while(!fin) {
-			fin = choixMenu(monTest);
+
+		while (!fin) {
+			fin = choixMenu(testFP, testBP);
 		}
 	}
-	
-	public static boolean choixMenu(TestsFingerprint testFP) {
+
+	public static boolean choixMenu(TestsFingerprint testFP, TestsBinPacking testBP) {
 		Scanner in;
 		String input;
 		int num = -1;
 		boolean result = false;
-		while((num != 0)&&(num < 0 || num > 6)) {
+		while ((num != 0) && (num < 0 || num > 8)) {
 			afficherMenu();
 			in = new Scanner(System.in);
 			try {
@@ -34,7 +35,7 @@ public class Launcher {
 				System.out.println("Ceci n'est pas un nombre valide.");
 			}
 		}
-		switch(num){
+		switch (num) {
 		case 0:
 			result = true;
 			System.out.println("Fermeture de l'application.");
@@ -49,7 +50,7 @@ public class Launcher {
 			testFP.testFingerprintTexte(); // Q4
 			break;
 		case 4:
-			testFP.testFingerprintFichiers(); // Q4 Q5 
+			testFP.testFingerprintFichiers(); // Q4 Q5
 			break;
 		case 5:
 			testFP.testCentaineExecutions(); // Q6
@@ -57,10 +58,17 @@ public class Launcher {
 		case 6:
 			testFP.testFingerContains(); // Q10 Q11
 			break;
+		case 7:
+			testBP.testFractionalPacking(); // Q12
+			break;
+
+		case 8:
+			testBP.testFirstFitPacking(); // Q12
+			break;
 		}
 		return result;
 	}
-	
+
 	public static void genererMenu() {
 		menu = "\n";
 		menu += "Tests disponibles :\n";
@@ -70,11 +78,13 @@ public class Launcher {
 		menu += "3- Fingerprint Texte (Q4)\n";
 		menu += "4- Fingerprint Fichiers (Q4, Q5)\n";
 		menu += "5- Centaine executions (Q6)\n";
-		menu += "6- FingerContains (Q10 Q11)\n";
+		menu += "6- FingerContains (Q10 Q11)\n\n";
 		menu += "BINPACKING\n";
-		menu += "Faites votre choix (0 pour quitter): ";
+		menu += "7- Fractional packing (Q12)\n";
+		menu += "8- First fit packing (Q12)\n";
+		menu += "\nFaites votre choix (0 pour quitter): ";
 	}
-	
+
 	public static void afficherMenu() {
 		System.out.println(menu);
 	}
