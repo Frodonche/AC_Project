@@ -6,9 +6,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-public class Main {
+public class MainFingerprint {
 	
-	public Main(){	
+	public MainFingerprint(){	
 	}
 	
 	public int puissance(int x, int k, int p){

@@ -9,7 +9,7 @@ public class Launcher {
 		System.out.println("Projet AC");
 		
 		// Creation de l'instance de tests
-		Tests monTest = new Tests();
+		TestsFingerprint monTest = new TestsFingerprint();
 		
 		genererMenu();
 		boolean fin = false;
@@ -19,7 +19,7 @@ public class Launcher {
 		}
 	}
 	
-	public static boolean choixMenu(Tests monTest) {
+	public static boolean choixMenu(TestsFingerprint testFP) {
 		Scanner in;
 		String input;
 		int num = -1;
@@ -40,22 +40,22 @@ public class Launcher {
 			System.out.println("Fermeture de l'application.");
 			break;
 		case 1:
-			monTest.testPuissance(); // Q1
+			testFP.testPuissance(); // Q1
 			break;
 		case 2:
-			monTest.testPremier(); // Q2 Q3
+			testFP.testPremier(); // Q2 Q3
 			break;
 		case 3:
-			monTest.testFingerprintTexte(); // Q4
+			testFP.testFingerprintTexte(); // Q4
 			break;
 		case 4:
-			monTest.testFingerprintFichiers(); // Q4 Q5 
+			testFP.testFingerprintFichiers(); // Q4 Q5 
 			break;
 		case 5:
-			monTest.testCentaineExecutions(); // Q6
+			testFP.testCentaineExecutions(); // Q6
 			break;
 		case 6:
-			monTest.testFingerContains(); // Q10 Q11
+			testFP.testFingerContains(); // Q10 Q11
 			break;
 		}
 		return result;
@@ -63,13 +63,15 @@ public class Launcher {
 	
 	public static void genererMenu() {
 		menu = "\n";
-		menu += "Tests disponibles :\n"; 
+		menu += "Tests disponibles :\n";
+		menu += "FINGERPRINT\n";
 		menu += "1- Puissance (Q1)\n";
 		menu += "2- Premier (Q2, Q3)\n";
 		menu += "3- Fingerprint Texte (Q4)\n";
 		menu += "4- Fingerprint Fichiers (Q4, Q5)\n";
 		menu += "5- Centaine executions (Q6)\n";
 		menu += "6- FingerContains (Q10 Q11)\n";
+		menu += "BINPACKING\n";
 		menu += "Faites votre choix (0 pour quitter): ";
 	}
 	

@@ -1,11 +1,11 @@
 package general;
 
-public class Tests {
-	Main main;
+public class TestsFingerprint {
+	MainFingerprint main;
 	
-	public Tests(){
+	public TestsFingerprint(){
 		System.out.println("Creation d'une instance Main pour les tests...");
-		main = new Main();
+		main = new MainFingerprint();
 		System.out.println("Instance de Main creee !");
 	}
 	

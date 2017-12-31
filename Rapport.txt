@@ -36,3 +36,8 @@ Q9/
   Comme pour chaque projet effectue dans un laps de temps un peu limite avec une question bonus un peu compliquee : RIP le bonus... :'(
   
 Q11/
+	Etant donne que les fichiers test2 et test4 ont respectivement une taille similaire aux fichiers test5.xpm et test3.xpm, nous avons decide de tester ces fichiers.
+	Voici donc la trace d'execution du test correspondant :
+	-- testFingerContains -- 
+	test2 est contenu dans test5.xpm : false
+	test4 est contenu dans test3.xpm : false
