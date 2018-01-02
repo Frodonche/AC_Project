@@ -60,9 +60,15 @@ public class TestsBinPacking {
 		double ffd[] = main.tableauMethode(4);
 		double bfd[] = main.tableauMethode(5);
 		
-		System.out.println("fp  ffp  bfp  ffd  bfd");
-		for(int i = 0; i < 10; i++) {
-			System.out.println(fractionalPacking[i]+" "+ ffp[i] +" "+ bfp[i] +" "+ ffd[i] + " " + bfd[i]);
-		}
+		double data[][] = new double[5][10];
+		
+		//for(int i = 0; i < 10; i++) {
+			data[0] = fractionalPacking;
+			data[1] = ffp;
+			data[2] = bfp;
+			data[3] = ffd;
+			data[4] = bfd;
+		//}
+		FenetreTableau fen = new FenetreTableau(data);
 	}
 }
