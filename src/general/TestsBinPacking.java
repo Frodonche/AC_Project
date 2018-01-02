@@ -48,4 +48,21 @@ public class TestsBinPacking {
 		System.out.println("-- testBestFitDecreasingPacking --");
 		main.bestFitDecreasingPacking(10, 8, 4, 2, 6);
 	}
+	
+	/**
+	 * Test des differentes methodes de packing et affichage des tableaux correspondant (Q16)
+	 */
+	public void testMethodesPacking() {
+		System.out.println("-- testMethodesPacking --");
+		double fractionalPacking[] = main.tableauMethode(1);
+		double ffp[] = main.tableauMethode(2);
+		double bfp[] = main.tableauMethode(3);
+		double ffd[] = main.tableauMethode(4);
+		double bfd[] = main.tableauMethode(5);
+		
+		System.out.println("fp  ffp  bfp  ffd  bfd");
+		for(int i = 0; i < 10; i++) {
+			System.out.println(fractionalPacking[i]+" "+ ffp[i] +" "+ bfp[i] +" "+ ffd[i] + " " + bfd[i]);
+		}
+	}
 }

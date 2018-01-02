@@ -25,7 +25,7 @@ public class Launcher {
 		String input;
 		int num = -1;
 		boolean result = false;
-		while ((num != 0) && (num < 0 || num > 11)) {
+		while ((num != 0) && (num < 0 || num > 12)) {
 			afficherMenu();
 			in = new Scanner(System.in);
 			try {
@@ -74,6 +74,9 @@ public class Launcher {
 		case 11:
 			testBP.testBestFitDecreasingPacking(); // Q15
 			break;
+		case 12:
+			testBP.testMethodesPacking(); // Q16
+			break;
 		}
 		return result;
 	}
@@ -94,6 +97,7 @@ public class Launcher {
 		menu += "9- Best fit packing (Q14)\n";
 		menu += "10- First fit decreasing packing (Q15)\n";
 		menu += "11- Best fit decreasing packing (Q15)\n";
+		menu += "12- Tableaux test methodes packing (Q16)\n";
 		menu += "\nFaites votre choix (0 pour quitter): ";
 	}
 

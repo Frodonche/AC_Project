@@ -8,7 +8,7 @@ public class MainBinPacking {
 	public MainBinPacking() {
 	}
 	
-	public void fractionalPacking(int tailleBoite, int...lesObjets) {
+	public int fractionalPacking(int tailleBoite, int...lesObjets) {
 		int total = 0;
 		int nbBoites;
 		for(int objet : lesObjets) {
@@ -19,9 +19,10 @@ public class MainBinPacking {
 		else // si une boite est partiellement remplie, il faut ajouter un au resultat de la division
 			nbBoites = (total / tailleBoite)+1;
 		System.out.println("La liste d'objets peut etre rangee dans un minimum de "+nbBoites+" boites de taille "+tailleBoite);
+		return nbBoites;
 	}
 	
-	public void firstFitPacking(int tailleBoite, int...lesObjets) {
+	public int firstFitPacking(int tailleBoite, int...lesObjets) {
 		boolean objetTropGros = checkObjetTropGros(tailleBoite, lesObjets);
 		if(objetTropGros == false) { // si aucun objet n'est plus gros que la taille des boites
 			boolean caRentre; // utilise pour savoir si l'objet a reussi a rentrer dans les boites presentes ou si il faut en creer une nouvelle
@@ -68,13 +69,15 @@ public class MainBinPacking {
 			System.out.println("La liste d'objets peut etre rangee dans "+lesBoites.size()+" boites de taille "+tailleBoite);
 			afficherRemplissage(lesBoitesAff);
 			
+			return lesBoites.size();
 		}else {
 			System.out.println("Impossible : au moins un objet est plus gros que la taille des boites");
+			return -1;
 		}
 	}
 	
 	
-	public void bestFitPacking(int tailleBoite, int...lesObjets) {
+	public int bestFitPacking(int tailleBoite, int...lesObjets) {
 		boolean objetTropGros = checkObjetTropGros(tailleBoite, lesObjets);
 		if(objetTropGros == false) { // si aucun objet n'est plus gros que la taille des boites
 			boolean caRentre; // utilise pour savoir si l'objet a reussi a rentrer dans les boites presentes ou si il faut en creer une nouvelle
@@ -130,14 +133,16 @@ public class MainBinPacking {
 			
 			System.out.println("La liste d'objets peut etre rangee dans "+lesBoites.size()+" boites de taille "+tailleBoite);
 			afficherRemplissage(lesBoitesAff);
+			return lesBoites.size();
 			
 		}else {
 			System.out.println("Impossible : au moins un objet est plus gros que la taille des boites");
+			return -1;
 		}
 	}
 	
 	
-	public void firstFitDecreasingPacking(int tailleBoite, int...lesObjets) {
+	public int firstFitDecreasingPacking(int tailleBoite, int...lesObjets) {
 		// On recupere les objets dans une ArrayList
 		ArrayList<Integer> listeObjets = new ArrayList<Integer>();
 		for(int objet : lesObjets) {
@@ -156,11 +161,11 @@ public class MainBinPacking {
 		}
 		
 		// Puis on appelle la methode firstFitPacking
-		firstFitPacking(tailleBoite, temp);
+		return firstFitPacking(tailleBoite, temp);
 	}
 	
 	
-	public void bestFitDecreasingPacking(int tailleBoite, int...lesObjets) {
+	public int bestFitDecreasingPacking(int tailleBoite, int...lesObjets) {
 		// On recupere les objets dans une ArrayList
 		ArrayList<Integer> listeObjets = new ArrayList<Integer>();
 		for(int objet : lesObjets) {
@@ -179,7 +184,7 @@ public class MainBinPacking {
 		}
 		
 		// Puis on appelle la methode bestFitPacking
-		bestFitPacking(tailleBoite, temp);
+		return bestFitPacking(tailleBoite, temp);
 	}
 	
 	
@@ -204,5 +209,56 @@ public class MainBinPacking {
 		for(String boite : lesBoitesAff) {
 			System.out.println(boite);
 		}
+	}
+	
+	
+	public double[] tableauMethode(int choixMethode) {
+		double tab[] = new double[10];
+		int instancesTest[] = new int[20];
+		double hauteur; // a convertir en int au moment d'utiliser les méthodes
+		int tailleTemp;
+		int tabTest[];
+		int sommeTemp;
+		
+		for(int i = 100; i <= 1000; i = i+100) {
+			hauteur = 1.5 * i; // boites de hauteur 1.5 * n
+			tabTest = new int[i]; // tableau de test, de taille i
+			
+			// on effectue 20 tests
+			for(int j = 0; j < 20; j++) {
+				// on remplit le tableau de i nombres aléatoires
+				for(int k = 0; k < i; k++) {
+					tailleTemp = (int)(0.2 * i) + (int)(Math.random() * (((0.8*i) - (0.2*i)) + 1));
+					tabTest[k] = tailleTemp;
+				}
+				
+				// On effectue l'opération de packing
+				switch (choixMethode){
+				case 1: // Fractional Packing
+					instancesTest[j] = fractionalPacking((int)hauteur, tabTest);
+					break;
+				case 2: // First Fit Packing
+					instancesTest[j] = firstFitPacking((int)hauteur, tabTest);
+					break;
+				case 3: // Best Fit Packing
+					instancesTest[j] = bestFitPacking((int)hauteur, tabTest);
+					break;
+				case 4: // First Fit Decreasing Packing
+					instancesTest[j] = firstFitDecreasingPacking((int)hauteur, tabTest);
+					break;
+				case 5: // Best Fit Decreasing Packing
+					instancesTest[j] = bestFitDecreasingPacking((int)hauteur, tabTest);
+					break;
+				}
+			}
+			// On calcule la moyenne de tous les tests et on l'envoie dans le tableau de moyennes
+			sommeTemp = 0;
+			for(int m = 0; m < 20; m++) {
+				sommeTemp += instancesTest[m];
+			}
+			tab[(i/100)-1] = sommeTemp / 20;
+		}
+		
+		return tab;
 	}
 }
