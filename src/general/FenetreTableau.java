@@ -12,7 +12,7 @@ public class FenetreTableau extends JFrame {
 
 	    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-	    this.setTitle("JTable");
+	    this.setTitle("Methodes");
 
 	    this.setSize(300, 240);
 
